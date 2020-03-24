@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head th:replace="~{import :: head}"></head>
+
+
+  <body>
+
+    <!-- Header Area wrapper Starts -->
+    <head th:replace="~{import :: header}"></head>
+    <!-- Header Area wrapper End -->
+
+
+
+
+
+
+
+
+
+
+    <!-- 登陆-->
+    <div id="login" class="section-padding">
+      <div class="container">
+        <div class="row">
+
+
+
+
+
+          <div class="show col-md-12" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <div class="modal-body">
+                  <h4 class="modal-title" align="center">登陆</h4>
+                  <br/>
+                  <form class="form-horizontal" role="form">
+                    <div class="form-group">
+
+                      <div class="col-sm-5 col-md-12">
+                        <input type="text" class="form-control" id="name" placeholder="请输您的入账号">
+                      </div>
+                    </div>
+                    <div class="form-group">
+
+                      <div class="col-sm-5 col-md-12">
+                        <input type="password" class="form-control" id="password" placeholder="请输入您的密码">
+                      </div>
+
+
+                    </div>
+
+
+                    <div class="form-group">
+                      <div class="col-sm-offset-4 col-sm-5 col-md-12">
+                        <button id="submit_log" type="submit" class="btn btn-default ">登陆</button>
+                      </div>
+
+                      <br/>
+
+                      <div class="col-sm-offset-4 col-sm-5 col-md-12">
+                        <button id="submit_reg" type="submit" class="btn btn-default btn-block btn-primary">注册</button>
+                      </div>
+
+                    </div>
+                  </form>
+                </div>
+
+
+              </div>
+
+            </div>
+          </div>
+
+
+
+
+          <!--<form  class="col-md-12" action="/login" method="post">-->
+
+            <!--<div class="login_padding " id="login_model">-->
+
+              <!--&lt;!&ndash;<h2>用户名</h2>&ndash;&gt;-->
+              <!--<label>-->
+                <!--<input type="text" id="username" name="username" class="txt_input txt_input2" placeholder="请输入用户名">-->
+              <!--</label>-->
+
+              <!--&lt;!&ndash;<h2>密码</h2>&ndash;&gt;-->
+              <!--<label>-->
+                <!--<input type="password"  id="userpwd" name="userpwd" class="txt_input" placeholder="请输入登陆密码">-->
+              <!--</label>-->
+
+
+
+
+              <!--<p class="forgot"><a id="iforget" href="javascript:void(0);">Forgot your password?</a></p>-->
+
+              <!--<div class="rem_sub">-->
+                <!--<div class="rem_sub_l">-->
+
+
+                  <!--<a href="/sign"><input type="button" class="sub_button" name="sigin" id="sigin" value="注册" style="opacity: 0.7;"></a>-->
+
+                <!--</div>-->
+
+
+
+
+                <!--<div align="right">-->
+                  <!--<input type="submit" class="sub_button" name="button" id="button" value="登陆" style="opacity: 0.7;">-->
+                <!--</div>-->
+
+
+              <!--</div>-->
+
+
+
+
+
+            <!--</div>-->
+
+          <!--</form>-->
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <!-- 第一栏结束 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div th:replace="~{import :: down}"></div>
+
+
+
+    <div th:replace="~{import :: script}"></div>
+      
+  </body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+    <!--需要导入的-->
+    <head th:fragment="head">
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>第15届全国流变学学术会议</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" >
+        <!-- Font -->
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <!-- Slicknav -->
+        <link rel="stylesheet" type="text/css" href="css/slicknav.css">
+        <!-- Owl carousel -->
+        <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="css/owl.theme.css">
+        <!-- Animate -->
+        <link rel="stylesheet" type="text/css" href="css/animate.css">
+        <!-- Main Style -->
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <!-- Extras Style -->
+        <link rel="stylesheet" type="text/css" href="css/extras.css">
+        <!-- Responsive Style -->
+        <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+    </head>
+
+
+
+
+    <!--大横幅-->
+    <header th:fragment="header" id="header-wrap">
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a href="#sliders" class="navbar-brand"><img src="img/logo.png" alt=""></a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#jianjie">
+                                会议简介
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#hezuodanwei">
+                                合作单位
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#weiyuanhui">
+                                组织委员会
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#topic">
+                                会议主题
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#require">
+                                征文要求
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#date">
+                                会议日程
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#importDate">
+                                重要日期
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#price">
+                                会议注册费
+                            </a>
+                        </li>
+
+
+                        <!--<li class="nav-item">-->
+                            <!--<a class="nav-link" href="#contact">-->
+                                <!--联系方式-->
+                            <!--</a>-->
+                        <!--</li>-->
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">
+                                登陆
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Start -->
+            <ul class="mobile-menu navbar-nav">
+                <li>
+                    <a class="page-scroll" href="#jianjie">
+                        会议简介
+                    </a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#hezuodanwei">
+                        合作单位
+                    </a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#weiyuanhui">
+                        会议组织委员会
+                    </a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#topic">
+                        会议主题
+                    </a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#require">
+                        征文要求
+                    </a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#date">
+                        会议日程
+                    </a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#importDate">
+                        重要日期
+                    </a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#price">
+                        会议注册费
+                    </a>
+                </li>
+
+                <li>
+                    <a class="page-scroll" href="/login">
+                        登陆
+                    </a>
+                </li>
+
+
+            </ul>
+            <!-- Mobile Menu End -->
+
+        </nav>
+        <!-- Navbar End -->
+
+        <!-- sliders -->
+        <div id="sliders">
+            <div class="full-width">
+                <!-- light slider -->
+                <div id="light-slider" class="carousel slide">
+                    <div id="carousel-area">
+                        <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-slider" data-slide-to="1"></li>
+                                <li data-target="#carousel-slider" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img src="img/slider/bg-1.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h3 class="slide-title animated fadeInDown">第15届全国流变学学术会议</h3>
+                                        <h5 class="slide-text animated fadeIn">重庆夜景</h5>
+                                        <!--<a href="#" class="btn btn-lg btn-common animated fadeInUp"></a>-->
+                                        <a href="#" class="btn btn-lg btn-border animated fadeInUp">了解更多</a>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/slider/bg-2.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h3 class="slide-title animated fadeInDown">第15届全国流变学学术会议</h3>
+                                        <h5 class="slide-text animated fadeIn">朝天门大桥</h5>
+                                        <a href="#" class="btn btn-lg btn-common animated fadeInUp">了解更多</a>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/slider/bg-3.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h3 class="slide-title animated fadeInDown">第15届全国流变学学术会议</h3>
+                                        <h5 class="slide-text animated fadeIn">本次活动的举办地——重庆大学</h5>
+                                        <!--<a href="#" class="btn btn-lg btn-border animated fadeInUp">Get Started</a>-->
+                                        <a href="#" class="btn btn-lg btn-common animated fadeInUp">了解更多</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
+                                <i class="fa fa-chevron-left"></i>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel-slider" role="button" data-slide="next">
+                                <i class="fa fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End sliders -->
+
+    </header>
+
+
+
+
+    <!--需要导入的脚本-->
+    <div th:fragment="script">
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="js/jquery-min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.mixitup.js"></script>
+        <script src="js/jquery.countTo.js"></script>
+        <script src="js/jquery.nav.js"></script>
+        <script src="js/scrolling-nav.js"></script>
+        <script src="js/jquery.easing.min.js"></script>
+        <script src="js/jquery.slicknav.js"></script>
+        <script src="js/form-validator.min.js"></script>
+        <script src="js/contact-form-script.js"></script>
+        <script src="js/main.js"></script>
+    </div>
+
+
+    <!--底部的联系方式等-->
+    <div th:fragment="down">
+
+
+        <!-- Footer Section -->
+        <footer id="contact" class="footer">
+            <!-- Container Starts -->
+            <div class="container">
+                <!-- Row Starts -->
+                <div class="row section">
+                    <!-- Footer Widget Starts -->
+                    <div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn">
+                        <h3 class="small-title">
+                            会务联系人
+                        </h3>
+                        <p>余淼（论文）yumiao@cqu.edu.cn；13908371615</p>
+                        <p>浮洁（注册、参展、住宿）fujie@cqu.edu.cn；13629722609</p>
+                        <p>綦松（其他）qisong@cqu.edu.cn；13594313148</p>
+
+                        <!--<div class="social-footer">-->
+                        <!--<a href="#"><i class="fa fa-facebook icon-round"></i></a>-->
+                        <!--<a href="#"><i class="fa fa-twitter icon-round"></i></a>-->
+                        <!--<a href="#"><i class="fa fa-linkedin icon-round"></i></a>-->
+                        <!--<a href="#"><i class="fa fa-google-plus icon-round"></i></a>-->
+                        <!--</div>-->
+                    </div>
+                    <!-- Footer Widget Ends -->
+
+                    <!-- Footer Widget Starts -->
+                    <div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn" data-wow-delay=".2s">
+                        <h3 class="small-title">
+                            其他链接
+                        </h3>
+                        <ul class="menu">
+                            <li><a href="#">重庆大学</a></li>
+                            <li><a href="#">重庆大学光电工程学院</a></li>
+                            <li><a href="#">重庆大学智能结构与控制实验</a></li>
+                            <li><a href="#">其他</a></li>
+                            <li><a href="#">其他</a></li>
+                        </ul>
+                    </div>
+                    <!-- Footer Widget Ends -->
+
+                    <!--&lt;!&ndash; Footer Widget Starts &ndash;&gt;-->
+                    <!--<div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn" data-wow-delay=".5s">-->
+                    <!--<h3 class="small-title">-->
+                    <!--GALLERY-->
+                    <!--</h3>-->
+                    <!--<div class="plain-flicker-gallery">-->
+                    <!--<a href="#"><img src="img/flicker/img1.jpg" alt=""></a>-->
+                    <!--<a href="#"><img src="img/flicker/img2.jpg" alt=""></a>-->
+                    <!--<a href="#"><img src="img/flicker/img3.jpg" alt=""></a>-->
+                    <!--<a href="#"><img src="img/flicker/img4.jpg" alt=""></a>-->
+                    <!--<a href="#"><img src="img/flicker/img5.jpg" alt=""></a>-->
+                    <!--<a href="#"><img src="img/flicker/img6.jpg" alt=""></a>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash; Footer Widget Ends &ndash;&gt;-->
+
+                    <!--&lt;!&ndash; Footer Widget Starts &ndash;&gt;-->
+                    <!--<div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn" data-wow-delay=".8s">-->
+                    <!--<h3 class="small-title">-->
+                    <!--SUBSCRIBE US-->
+                    <!--</h3>-->
+                    <!--<div class="contact-us">-->
+                    <!--<form>-->
+                    <!--<div class="form-group">-->
+                    <!--<input type="text" class="form-control" id="exampleInputName2" placeholder="Enter your name">-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                    <!--<input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter your email">-->
+                    <!--</div>-->
+                    <!--<button type="submit" class="btn btn-common">Submit</button>-->
+                    <!--</form>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash; Footer Widget Ends &ndash;&gt;-->
+
+                </div>
+                <!-- Row Ends -->
+            </div>
+            <!-- Container Ends -->
+
+            <!--&lt;!&ndash; Copyright &ndash;&gt;-->
+            <!--<div id="copyright">-->
+            <!--<div class="container">-->
+            <!--<div class="row">-->
+            <!--<div class="col-lg-6 col-md-6 col-xs-12">-->
+            <!--<p class="copyright-text">Copyright &copy; 2020.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>-->
+            <!--</div>-->
+            <!--<div class="col-lg-6 col-md-6 col-xs-12">-->
+            <!--<ul class="nav nav-inline  justify-content-end ">-->
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link active" href="#">Home</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link" href="#">Sitemap</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link" href="#">Privacy Policy</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link" href="#">Terms of services</a>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; Copyright  End&ndash;&gt;-->
+
+        </footer>
+        <!-- Footer Section End-->
+
+
+
+        <!-- Go to Top Link -->
+        <a href="#" class="back-to-top">
+            <i class="fa fa-arrow-up"></i>
+        </a>
+
+        <!-- Preloader -->
+        <div id="preloader">
+            <div class="loader" id="loader-1"></div>
+        </div>
+        <!-- End Preloader -->
+
+
+    </div>
+
+
+</html>
