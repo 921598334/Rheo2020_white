@@ -47,10 +47,25 @@
                         <span class="icon-menu"></span>
                         <span class="icon-menu"></span>
                     </button>
-                    <a href="#sliders" class="navbar-brand"><img src="img/logo.png" alt=""></a>
+                    <a href="/" class="navbar-brand"><img src="img/logo.png" alt=""></a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-navbar">
-                    <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+
+
+
+                    <ul  th:if="${#httpServletRequest.getRequestURI()!='/'}" class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/">
+                                返回主页
+                            </a>
+                        </li>
+
+
+                    </ul>
+
+
+
+                    <ul  th:if="${#httpServletRequest.getRequestURI()=='/'}" class="navbar-nav mr-auto w-100 justify-content-end clearfix">
 
                         <li class="nav-item active">
                             <a class="nav-link" href="#jianjie">
@@ -105,18 +120,49 @@
                         <!--</li>-->
 
 
-                        <li class="nav-item">
+
+
+                        <li class="nav-item"   th:if="${session.user==null}">
                             <a class="nav-link" href="/login">
                                 登陆
                             </a>
+
+
+
+
+
                         </li>
 
+                        <li class="nav-item"   th:if="${session.user!=null}">
+
+                            <a class="nav-link" href="/userManager" th:text="${session.user.getName()}">
+
+                            </a>
+                        </li>
+
+
+
+
                     </ul>
+
+
+
                 </div>
             </div>
 
             <!-- Mobile Menu Start -->
-            <ul class="mobile-menu navbar-nav">
+
+            <ul th:if="${#httpServletRequest.getRequestURI()!='/'}" class="mobile-menu navbar-nav">
+                <li>
+                    <a class="page-scroll" href="/">
+                        返回主页面
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <ul th:if="${#httpServletRequest.getRequestURI()=='/'}" class="mobile-menu navbar-nav">
                 <li>
                     <a class="page-scroll" href="#jianjie">
                         会议简介
@@ -166,6 +212,8 @@
 
 
             </ul>
+
+
             <!-- Mobile Menu End -->
 
         </nav>
@@ -190,7 +238,7 @@
                                         <h3 class="slide-title animated fadeInDown">第15届全国流变学学术会议</h3>
                                         <h5 class="slide-text animated fadeIn">重庆夜景</h5>
                                         <!--<a href="#" class="btn btn-lg btn-common animated fadeInUp"></a>-->
-                                        <a href="#" class="btn btn-lg btn-border animated fadeInUp">了解更多</a>
+                                        <a href="https://baike.baidu.com/item/山城夜景/8905328?fr=aladdin" target="_blank" class="btn btn-lg btn-border animated fadeInUp">了解更多</a>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
@@ -198,7 +246,7 @@
                                     <div class="carousel-caption">
                                         <h3 class="slide-title animated fadeInDown">第15届全国流变学学术会议</h3>
                                         <h5 class="slide-text animated fadeIn">朝天门大桥</h5>
-                                        <a href="#" class="btn btn-lg btn-common animated fadeInUp">了解更多</a>
+                                        <a href="https://baike.baidu.com/item/朝天门长江大桥/3828986?fromtitle=朝天门大桥&fromid=4859715&fr=aladdin" target="_blank" class="btn btn-lg btn-common animated fadeInUp">了解更多</a>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
@@ -207,7 +255,7 @@
                                         <h3 class="slide-title animated fadeInDown">第15届全国流变学学术会议</h3>
                                         <h5 class="slide-text animated fadeIn">本次活动的举办地——重庆大学</h5>
                                         <!--<a href="#" class="btn btn-lg btn-border animated fadeInUp">Get Started</a>-->
-                                        <a href="#" class="btn btn-lg btn-common animated fadeInUp">了解更多</a>
+                                        <a href="http://www.cqu.edu.cn" target="_blank" class="btn btn-lg btn-common animated fadeInUp">了解更多</a>
                                     </div>
                                 </div>
                             </div>

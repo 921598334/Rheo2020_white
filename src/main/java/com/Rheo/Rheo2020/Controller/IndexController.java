@@ -16,20 +16,11 @@ import java.util.List;
 public class IndexController {
 
 
-    int reFreshTime = 0;
-
-
-
     @GetMapping("/")
     public String index(Model model, HttpServletResponse response, HttpServletRequest request)
     {
 
-        //发送邮件成功时给用户的的反馈
-        String info = (String) request.getSession().getAttribute("info");
-        if(info!=null && !info.equals("")){
-            model.addAttribute("info",info);
-            request.getSession().removeAttribute("info");
-        }
+
 
 
         return "index";

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head th:replace="~{import :: head}"></head>
+
+
+  <body>
+
+    <!-- Header Area wrapper Starts -->
+    <head th:replace="~{import :: header}"></head>
+    <!-- Header Area wrapper End -->
+
+
+    <div class="show col-md-12" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-body">
+            <h4 class="modal-title" align="center" th:text="${session.user.getName()+'的信息'}"></h4>
+
+
+
+            <div class="alert alert-danger " th:if="${error!=null}"  th:text="${error}" ></div>
+
+
+            <br/>
+
+            <form class="form-horizontal" role="form" action="/userManager" method="post">
+
+              <div class="form-group">
+
+
+                <input type="hidden" name="name" id="name" th:value="${session.user.getName()}">
+
+
+                <h8 class="modal-title col-sm-5 col-md-12" th:text="${'创建时间：'+#dates.format(session.user.getGmt_create(),'yyyy/MM/dd')}"></h8>
+
+                <h8 class="modal-title col-sm-5 col-md-12" th:text="${'上次登陆时间：'+#dates.format(session.user.getGmt_modified(),'yyyy/MM/dd')}"></h8>
+
+                <br/>
+                <br/>
+
+                <div class="form-group">
+
+                  <div class="col-sm-5 col-md-12">
+                    <h6 class="modal-title ">真实姓名</h6>
+                    <input type="text" class="form-control" id="true_name" name="true_name" placeholder="请输您的真实姓名" th:value="${session.user.getTrue_name()}">
+                  </div>
+
+
+                </div>
+
+
+
+
+
+
+
+              </div>
+
+              <div class="form-group">
+
+                <div class="col-sm-5 col-md-12">
+                  <h6 class="modal-title ">登陆密码</h6>
+                  <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="请输入您的密码" th:value="${session.user.getPasswd()}">
+                </div>
+
+
+              </div>
+
+
+              <div class="form-group">
+                <div class="col-sm-5 col-md-12">
+                  <h6 class="modal-title ">确认登陆密码(修改登陆密码后请再次输入更新后的密码)</h6>
+                  <input type="password" class="form-control" id="userpwd_re" name="userpwd_re" placeholder="请再次输入您的密码" th:value="${session.user.getPasswd()}">
+                </div>
+
+              </div>
+
+
+
+
+
+              <div class="form-group">
+
+                <div class="col-sm-5 col-md-12">
+                  <h6 class="modal-title ">手机号</h6>
+                  <input type="text" class="form-control" id="tel" name="tel" placeholder="请输您的手机号" th:value="${session.user.getTel()}">
+                </div>
+
+
+                <div class="col-sm-5 col-md-12">
+                  <h6 class="modal-title ">邮箱</h6>
+                  <input type="text" class="form-control" id="email" name="email" placeholder="请输您的邮箱" th:value="${session.user.getEmail()}">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+
+                <div class="col-sm-5 col-md-12">
+                  <h6 class="modal-title ">居住地</h6>
+                  <input type="text" class="form-control" id="location" name="location" placeholder="请输您的居住地址" th:value="${session.user.getLocation()}">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <div class="col-sm-5 col-md-12">
+                  <h6 class="modal-title ">所属机构</h6>
+                  <input type="text" class="form-control" id="org" name="org" placeholder="请输您所属的机构" th:value="${session.user.getOrganization()}">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <div class="col-sm-5 col-md-12">
+                  <h6 class="modal-title ">研究方向</h6>
+                  <input type="text" class="form-control" id="rearch" name="rearch" placeholder="请输您的研究方向" th:value="${session.user.getRearch()}">
+                </div>
+              </div>
+
+
+
+              <div class="form-group">
+                <div class="col-sm-5 col-md-12">
+                  请上传您的文件（要求格式为PDF，大小不超过10M）:<input type="file" id="file" name="file" /><input type="hidden" th:value="${imag}" th:text="${imag}" id="filePath" name="filePath"/>  <br>
+
+                </div>
+              </div>
+
+
+              <br/>
+
+
+
+              <h8 class="modal-title" align="center">信息更改后请点击保存</h8>
+
+
+              <div class="form-group col-md-12">
+
+                <br/>
+
+                <div class="col-sm-offset-4 col-sm-5 col-md-12 text-center">
+
+
+                  <button id="submit_save" type="submit" class="btn btn-default btn-block btn-danger">保存</button>
+                </div>
+
+                <br/>
+
+                <div class="col-sm-offset-4 col-sm-5 col-md-12 text-center">
+                  <a href="/logout"><button id="submit_logout" type="button" class="btn btn-default btn-block btn-danger">安全退出登陆</button></a>
+
+                </div>
+
+
+              </div>
+
+
+
+            </form>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div th:replace="~{import :: down}"></div>
+
+
+
+    <div th:replace="~{import :: script}"></div>
+      
+  </body>
+</html>
