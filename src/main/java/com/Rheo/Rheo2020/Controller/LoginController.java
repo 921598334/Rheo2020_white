@@ -33,15 +33,15 @@ public class LoginController {
 
 
     @PostMapping("/login")
-    public String login( @RequestParam(name="name",defaultValue="") String name,
+    public String login( @RequestParam(name="tel_email",defaultValue="") String tel_email,
                          @RequestParam(name="userpwd",defaultValue="") String password,
                          HttpServletRequest request,
                          HttpServletResponse response,
                          Model model){
 
-        if(name.equals("")){
+        if(tel_email.equals("")){
 
-            model.addAttribute("error","用户名不能为空");
+            model.addAttribute("error","请输入注册时的手机或邮箱进行登陆");
             return "login";
 
         }
@@ -53,13 +53,12 @@ public class LoginController {
         }
 
 
-        User user = new User();
-        user.setName(name);
-        user.setPasswd(password);
+        User user = null;
 
 
-        user = userService.findByName(user.getName());
-
+        //尝试通过手机或者邮件去寻找用户
+        user = userService.findByTelAndPasswd(tel_email,password);
+        if(user==null) user = userService.findByEmailAndPasswd(tel_email,password);
 
 
 

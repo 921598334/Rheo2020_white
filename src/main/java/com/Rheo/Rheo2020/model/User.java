@@ -2,12 +2,10 @@
 package com.Rheo.Rheo2020.model;
 
 
+import com.Rheo.Rheo2020.eunm.UserType;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -17,18 +15,25 @@ public class User {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
-    private String name;
+
     private String passwd;
     private String token;
     private Long gmt_create;
     private Long gmt_modified;
-    private String filePath;
+
+    @OneToOne
+    private FileInfo fileInfo;
 
     private String tel;
     private String email;
     private String location;
     private String true_name;
     private String organization;
+    private String school;
+    private String degree;
     private String rearch;
+
+    private boolean is_pay;
+    private Integer user_type;
 
 }

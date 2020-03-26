@@ -3,6 +3,7 @@ package com.Rheo.Rheo2020.Controller;
 
 
 import com.Rheo.Rheo2020.Service.UserService;
+import com.Rheo.Rheo2020.eunm.UserType;
 import com.Rheo.Rheo2020.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,7 +44,7 @@ public class SignController {
     public String sign(HttpServletRequest request,
                        Model model,
                        HttpServletResponse response,
-                       @RequestParam(name="name",defaultValue="") String name,
+
                        @RequestParam(name="true_name",defaultValue="") String true_name,
                        @RequestParam(name="tel",defaultValue="") String tel,
                        @RequestParam(name="userpwd",defaultValue="") String userpwd,
@@ -51,6 +52,9 @@ public class SignController {
                        @RequestParam(name="email",defaultValue="") String email,
                        @RequestParam(name="location",defaultValue="") String location,
                        @RequestParam(name="org",defaultValue="") String org,
+                       @RequestParam(name="school",defaultValue="") String school,
+                       @RequestParam(name="degree",defaultValue="") String degree,
+                       @RequestParam(name="type",defaultValue="") String type,
                        @RequestParam(name="rearch",defaultValue="") String rearch)
     {
 
@@ -59,33 +63,25 @@ public class SignController {
 
 
         User sessionUser = (User) request.getSession().getAttribute("regUser");
-        sessionUser.setName(name);
+
+
         sessionUser.setTrue_name(true_name);
         sessionUser.setPasswd(userpwd);
         sessionUser.setTel(tel);
         sessionUser.setEmail(email);
         sessionUser.setLocation(location);
         sessionUser.setOrganization(org);
+        sessionUser.setSchool(school);
+        sessionUser.setDegree(degree);
         sessionUser.setRearch(rearch);
+        sessionUser.setUser_type(Integer.valueOf(type));
 
 
         if(true_name.equals("")){
-
-
             model.addAttribute("error","真实姓名不能为空");
             return "sign";
-
         }
 
-
-
-
-        if(name.equals("")){
-
-            model.addAttribute("error","登陆用的用户名不能为空");
-            return "sign";
-
-        }
 
 
 
@@ -113,7 +109,6 @@ public class SignController {
 
 
         if(tel.equals("")){
-
             model.addAttribute("error","手机号不能为空");
             return "sign";
         }
@@ -131,15 +126,25 @@ public class SignController {
 
         if(location.equals("")){
 
-            model.addAttribute("error","居住地不能为空");
+            model.addAttribute("error","联系地址不能为空");
             return "sign";
         }
 
 
 
         if(org.equals("")){
-
             model.addAttribute("error","所属的组织机构不能为空");
+            return "sign";
+        }
+
+
+        if(school.equals("")){
+            model.addAttribute("error","毕业（所在）院校不能为空");
+            return "sign";
+        }
+
+        if(degree.equals("")){
+            model.addAttribute("error","最高学历不能为空");
             return "sign";
         }
 
@@ -158,28 +163,37 @@ public class SignController {
 
 
 
-        if(userService.findByName(name)!=null){
+        if(userService.findByTel(tel)!=null){
 
-            model.addAttribute("error","该用户名已经被注册过了，如果出现无法解决的问题，请联系技术支持");
+            model.addAttribute("error","该手机号已经被注册过了，如果出现无法解决的问题，请联系技术支持");
+            return "sign";
+        }
+
+        if(userService.findByEmail(email)!=null){
+
+            model.addAttribute("error","该邮箱已经被注册过了，如果出现无法解决的问题，请联系技术支持");
             return "sign";
         }
 
 
 
 
+
         User user = new User();
-        user.setName(name);
+
         user.setTel(tel);
         user.setEmail(email);
         user.setTrue_name(true_name);
         user.setOrganization(org);
+        user.setSchool(school);
+        user.setDegree(degree);
         user.setPasswd(userpwd);
         user.setLocation(location);
         Long createTime = System.currentTimeMillis();
         user.setGmt_create(createTime);
         user.setGmt_modified(createTime);
         user.setRearch(rearch);
-
+        user.setUser_type(Integer.valueOf(type));
 
 
 
@@ -194,6 +208,7 @@ public class SignController {
 
 
         userService.createOrUpdate(user);
+
         System.out.println("创建用户成功");
         model.addAttribute("info","创建用户成功");
 

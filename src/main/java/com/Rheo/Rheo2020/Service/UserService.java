@@ -14,17 +14,31 @@ public class UserService {
     UserRepository userRepository;
 
 
-    public User findByName(String name){
 
-        return  userRepository.findByName(name);
-
+    public User findById(Integer id){
+        Optional<User> userTmp = userRepository.findById(id);
+        return  userTmp.get();
     }
 
+
+    public User findByTelAndPasswd(String tel,String passwd){
+        return  userRepository.findByTelAndPasswd(tel,passwd);
+    }
+
+    public User findByEmailAndPasswd(String email,String passwd){
+        return  userRepository.findByEmailAndPasswd(email,passwd);
+    }
 
 
     public User findByTel(String tel){
 
         return  userRepository.findByTel(tel);
+
+    }
+
+    public User findByEmail(String email){
+
+        return  userRepository.findByEmail(email);
 
     }
 
@@ -37,13 +51,6 @@ public class UserService {
 
     }
 
-
-    public User findById(Integer id){
-        Optional<User> userTmp = userRepository.findById(id);
-
-        return userTmp.get();
-
-    }
 
 
 

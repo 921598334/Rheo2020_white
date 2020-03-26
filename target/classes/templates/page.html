@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{import :: head}"></head>
+
+
+<body>
+
+  <!-- Header Area wrapper Starts -->
+  <head th:replace="~{import :: header}"></head>
+  <!-- Header Area wrapper End -->
+
+
+
+
+
+
+
+
+
+  <!-- 第一拦 通知-->
+  <div id="tonzhi" class="section-padding">
+    <div class="container">
+      <div class="row">
+
+
+
+        <h5 class="col-md-12">
+          <a class="col-md-6" href="#" >已发布的通知公告</a>
+
+        </h5>
+
+
+
+        <p class="col-md-12" th:each="page,state:${pages}">
+          <a  class="col-md-6" href="#" style="color: #444" th:text="${state.index}+'.'+${page.getTitle()}"></a>
+          <a  class="col-md-6" href="#" style="color: #444" th:text="${#dates.format(page.getTime(),'yyyy-MM-dd')}"></a>
+
+        </p>
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- 第2栏结束 -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <div th:replace="~{import :: down}"></div>
+
+
+
+    <div th:replace="~{import :: script}"></div>
+      
+  </body>
+</html>
