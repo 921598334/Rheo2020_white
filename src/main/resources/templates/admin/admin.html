@@ -43,12 +43,12 @@
             </thead>
             <tbody>
               <tr style='vertical-align: middle;text-align: center;' th:each="user,state:${users}">
-                <td style='vertical-align: middle;text-align: center;' th:text="${user.getTrue_name()}"></td>
-                <td style='vertical-align: middle;text-align: center;' th:text="${user.getDegree()}"></td>
-                <td style='vertical-align: middle;text-align: center;' th:text="${user.getSchool()}"></td>
-                <td style='vertical-align: middle;text-align: center;' th:text="${user.getOrganization()}"></td>
-                <td style='vertical-align: middle;text-align: center;' th:text="${user.getRearch()}"></td>
-                <td style='vertical-align: middle;text-align: center;'><a th:href="${user.getFileInfo().getPath()}" th:text="${user.getFileInfo().getTitle()}"></a></td>
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getTrue_name()}!=null?${user.getTrue_name()}:''"></td>
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getDegree()}!=null?${user.getDegree()}:''"></td>
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getSchool()}!=null?${user.getSchool()}:''"></td>
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getOrganization()}!=null?${user.getOrganization()}:''"></td>
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getRearch()}!=null?${user.getRearch()}:''"></td>
+                <td style='vertical-align: middle;text-align: center;'><a th:href="${user.getFileInfo()}!=null?${user.getFileInfo().getPath()}:''"  th:text="${user.getFileInfo()}!=null?${user.getFileInfo().getTitle()}:''"></a></td>
               </tr>
 
 
@@ -72,8 +72,6 @@
   <div id="tonzhi" class="section-padding">
     <div class="container">
       <div class="row">
-
-
 
         <div class="col-md-12">
           <h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s">已发布的通知公告</h2>

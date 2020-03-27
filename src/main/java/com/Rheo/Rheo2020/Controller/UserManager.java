@@ -324,9 +324,12 @@ public class UserManager {
         }
 
 
+        if(fileInfo!=null){
+            //更新数据库
+            fileInfoServer.createOrUpdate(fileInfo);
+        }
 
-        //更新数据库
-        fileInfoServer.createOrUpdate(fileInfo);
+
         userService.createOrUpdate(user);
 
 

@@ -17,6 +17,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @Controller
@@ -25,6 +27,14 @@ public class SignController {
 
     @Autowired
     UserService userService;
+
+    //检查手机号的正则
+    String regexPhone = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[013678])|(18[0,5-9]))\\d{8}$";
+
+    //检查邮箱
+    String regExEmail1 = "[a-zA-Z]+[a-zA-Z0-9_]*@[a-zA-Z0-9]+[.][a-zA-Z0-9]+";
+    //字母开头，@后加字母或数字，后面加点，后面字母或数字
+    String regExEmail2 = "[a-zA-Z]+[a-zA-Z0-9_]*@[a-zA-Z0-9]+[.][a-zA-Z0-9]+[.][a-zA-Z0-9]+";
 
 
     @GetMapping("/sign")
@@ -64,6 +74,9 @@ public class SignController {
 
         User sessionUser = (User) request.getSession().getAttribute("regUser");
 
+        if(sessionUser==null){
+             return  "redirect:/sign";
+        }
 
         sessionUser.setTrue_name(true_name);
         sessionUser.setPasswd(userpwd);
@@ -106,10 +119,29 @@ public class SignController {
         }
 
 
+        if(userpwd.length()<=6){
+            sessionUser.setPasswd("");
+            model.addAttribute("error","密码至少要设置7位");
+            return "sign";
+        }
+
 
 
         if(tel.equals("")){
             model.addAttribute("error","手机号不能为空");
+            return "sign";
+        }
+
+        if(tel.length()!=11){
+            model.addAttribute("error","手机号应该为11位");
+            return "sign";
+        }
+
+        Pattern p = Pattern.compile(regexPhone);
+        Matcher m = p.matcher(tel);
+        boolean isMatch = m.matches();
+        if(!isMatch){
+            model.addAttribute("error","您输入的手机号格式不正确");
             return "sign";
         }
 
@@ -122,10 +154,16 @@ public class SignController {
         }
 
 
+        if(!(email.matches(regExEmail1) || email.matches(regExEmail2))){
+            model.addAttribute("error","您输入的邮箱格式不正确");
+            return "sign";
+        }
+
+
+
 
 
         if(location.equals("")){
-
             model.addAttribute("error","联系地址不能为空");
             return "sign";
         }
