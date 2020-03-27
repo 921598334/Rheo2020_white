@@ -12,7 +12,7 @@
 
 
     <div class="show col-md-12" id="myModal">
-      <div class="modal-dialog">
+      <div class="modal-dialog" style="max-width:700px">
         <div class="modal-content">
 
           <div class="modal-body">
@@ -142,9 +142,10 @@
 
               <div class="form-group">
                 <div class="col-sm-5 col-md-12">
-                  请上传您的文件（要求格式为pdf或doc，大小不超过10M）:<input type="file" id="file" name="file" /> <br>
 
-                  <!--<input type="hidden" th:value="${session.user.getFilePath()}"  id="filePath" name="filePath"/>-->
+                  <h6 class="modal-title ">请上传您的文件（要求格式为pdf或doc，大小不超过10Mb）</h6>
+                  <input type="file" id="file" name="file" /> <br>
+
 
                   <br/>
 
@@ -155,7 +156,7 @@
                     <br/>
                     大小:<label th:text="${size}"></label>
                     <br/>
-                    上传时间:<label th:text="${'上传时间：'+#dates.format(time,'yyyy-MM-dd HH:mm:ss')}"></label>
+                    <label th:text="${'上传时间：'+#dates.format(time,'yyyy-MM-dd HH:mm:ss')}"></label>
 
 
                   </div>
