@@ -30,7 +30,7 @@ public class FileTool {
 
 
 
-    //如果返回null表明上传失败，成功会返回路径
+    //如果返回null表明上传失败，成功会返回路径，该功能出来用来上传文件外还可以用于图片的上传，区分方法通过userid来区分，如果userid是image，那么就表明是图片上传，需要设置其他路径
     public String uploadFile(MultipartFile multipartFile,String userid ){
         if (multipartFile == null || multipartFile.isEmpty())
             return null;

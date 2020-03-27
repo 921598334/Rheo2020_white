@@ -57,26 +57,31 @@
 
           <h5 class="col-md-12">
             <a class="col-md-6" href="#" >通知公告</a>
-
           </h5>
 
 
 
-          <p class="col-md-12">
-            <a  class="col-md-6" href="#" style="color: #444">1.两年一届的全国流变学学术会议是中国流变学专家学者学术交流的盛会，马上召开，请赶快投稿</a>
-            <a  class="col-md-6" href="#" style="color: #444">2020.12.12</a>
-          </p>
 
-          <p class="col-md-12">
-            <a  class="col-md-6" href="#" style="color: #444">1.两年一届的全国流变学学术会议是中国流变学专家学者学术交流的盛会，马上召开，请赶快投稿</a>
-            <a  class="col-md-6" href="#" style="color: #444">2020.12.12</a>
-          </p>
+          <table class="table  table-hover">
+
+            <thead>
+            <tr style='vertical-align: middle;text-align: center;'>
+              <th style='vertical-align: middle;text-align: center;'>题目</th>
+              <th style='vertical-align: middle;text-align: center;'>发布时间</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr style='vertical-align: middle;text-align: center;' th:each="page,state:${pages}">
+              <td style='vertical-align: middle;text-align: center;' ><a th:href="@{/page(id=${page.getId()})}" th:text="${page.getTitle()}" style="color: #444"></a></td>
+              <td style='vertical-align: middle;text-align: center;' ><a th:href="@{/page(id=${page.getId()})}" th:text="${#dates.format(page.getTime(),'yyyy-MM-dd HH:mm:ss')}" style="color: #444"></a></td>
+
+            </tr>
 
 
-          <p class="col-md-12">
-            <a  class="col-md-6" href="#" style="color: #444">1.两年一届的全国流变学学术会议是中国流变学专家学者学术交流的盛会，马上召开，请赶快投稿</a>
-            <a  class="col-md-6" href="#" style="color: #444">2020.12.12</a>
-          </p>
+            </tbody>
+          </table>
+
 
 
 
@@ -268,7 +273,6 @@
           </div>
         </div>
         <div class="row" align="">
-
 
 
           <div class="col-lg-3 col-md-3 col-xs-3">
@@ -914,6 +918,9 @@
           <img src="img/img_price.png"   style="width: 60%;"/>
 
         </div>
+
+
+
 
 
 

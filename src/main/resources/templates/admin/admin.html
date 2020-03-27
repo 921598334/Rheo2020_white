@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{import :: head}"></head>
+
+
+<body>
+
+  <!-- Header Area wrapper Starts -->
+  <head th:replace="~{import :: header}"></head>
+  <!-- Header Area wrapper End -->
+
+
+
+
+
+
+
+
+
+  <!-- 第一拦 通知-->
+  <div id="lunwen" class="section-padding">
+    <div class="container">
+      <div class="row">
+
+
+
+        <div class="col-md-12">
+          <h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s">已上传的论文</h2>
+        </div>
+
+        <table class="table table-hover">
+
+            <thead>
+              <tr style='vertical-align: middle;text-align: center;'>
+                <th style='vertical-align: middle;text-align: center;'>作者</th>
+                <th style='vertical-align: middle;text-align: center;'>学历</th>
+                <th style='vertical-align: middle;text-align: center;'>毕业院校（或在读院校）</th>
+                <th style='vertical-align: middle;text-align: center;'>工作单位</th>
+                <th style='vertical-align: middle;text-align: center;'>研究方向</th>
+                <th style='vertical-align: middle;text-align: center;'>论文</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style='vertical-align: middle;text-align: center;' th:each="user,state:${users}">
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getTrue_name()}"></td>
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getDegree()}"></td>
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getSchool()}"></td>
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getOrganization()}"></td>
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getRearch()}"></td>
+                <td style='vertical-align: middle;text-align: center;'><a th:href="${user.getFileInfo().getPath()}" th:text="${user.getFileInfo().getTitle()}"></a></td>
+              </tr>
+
+
+            </tbody>
+        </table>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- 第1栏结束 -->
+
+
+
+
+
+
+  <div id="tonzhi" class="section-padding">
+    <div class="container">
+      <div class="row">
+
+
+
+        <div class="col-md-12">
+          <h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s">已发布的通知公告</h2>
+        </div>
+
+
+
+        <table class="table  table-hover">
+
+          <thead>
+          <tr style='vertical-align: middle;text-align: center;'>
+            <th style='vertical-align: middle;text-align: center;'>题目</th>
+            <th style='vertical-align: middle;text-align: center;'>发布时间</th>
+            <th style='vertical-align: middle;text-align: center;'>操作<a href="/add"> 添加新公告</a></th>
+
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr style='vertical-align: middle;text-align: center;' th:each="page,state:${pages}">
+            <td style='vertical-align: middle;text-align: center;' ><a th:href="@{/modification(id=${page.getId()})}" th:text="${page.getTitle()}" style="color: #444"></a></td>
+            <td style='vertical-align: middle;text-align: center;' ><a th:href="@{/modification(id=${page.getId()})}" th:text="${#dates.format(page.getTime(),'yyyy-MM-dd HH:mm:ss')}" style="color: #444"></a></td>
+            <td style='vertical-align: middle;text-align: center;'><a th:href="@{/delete(id=${page.getId()})}" >删除</a></td>
+          </tr>
+
+
+          </tbody>
+        </table>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+    <div th:replace="~{import :: down}"></div>
+
+
+
+    <div th:replace="~{import :: script}"></div>
+      
+  </body>
+</html>

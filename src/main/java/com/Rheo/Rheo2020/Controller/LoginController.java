@@ -2,6 +2,7 @@ package com.Rheo.Rheo2020.Controller;
 
 
 import com.Rheo.Rheo2020.Service.UserService;
+import com.Rheo.Rheo2020.eunm.UserType;
 import com.Rheo.Rheo2020.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -83,11 +84,26 @@ public class LoginController {
             //把user放入session中，以便能在index中显示,因为拦截器不会拦截login页面，所以需要在这里添加session
             request.getSession().setAttribute("user",user);
 
-            return  "redirect:/userManager";
+
+            if(user.getUser_type()==UserType.ADMIN.getType()){
+                return "redirect:/admin";
+            }else {
+                return  "redirect:/userManager";
+            }
+
+
+
+
         }else {
             System.out.println("输入用户名或者密码有错误");
             model.addAttribute("error","输入用户名或者密码有错误");
+
+
+
             return "login";
+
+
+
         }
 
 

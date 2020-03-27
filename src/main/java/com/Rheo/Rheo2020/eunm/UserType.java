@@ -5,8 +5,8 @@ public enum UserType {
     OFFICE_MEMBER(1),
     OFFICE_NOMEMBER(2),
     STUDENT_MEMBER(3),
-    STUDENT_NOMEMBER(4);
-
+    STUDENT_NOMEMBER(4),
+    ADMIN(5);
 
 
     private Integer type;

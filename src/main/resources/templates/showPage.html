@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{import :: head}"></head>
+
+<script src="/ckeditor/ckeditor.js"></script>
+
+
+<style>
+
+  #pageContent img:nth-child(n){
+
+    width: 80%;
+    height: auto;
+    overflow: hidden;
+
+  }
+
+</style>
+
+
+
+<body>
+
+  <!-- Header Area wrapper Starts -->
+  <head th:replace="~{import :: header}"></head>
+  <!-- Header Area wrapper End -->
+
+
+
+
+
+
+
+  <div id="page" class="section-padding">
+    <div class="container">
+      <div class="row">
+
+
+
+        <div class="show col-md-12" id="myModal">
+          <div class="modal-dialog col-md-12">
+            <div class="modal-content col-md-12">
+
+
+
+
+              <div class="modal-body" >
+                  <div class="col-sm-5 col-md-12">
+                    <h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s" th:utext="${page.getTitle()}"></h2>
+
+
+
+                    <div  id="pageContent" th:utext="${page.getContent()}"></div>
+
+
+                  </div>
+
+              </div>
+
+
+
+
+
+
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- 第2栏结束 -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <div th:replace="~{import :: down}"></div>
+
+
+
+    <div th:replace="~{import :: script}"></div>
+      
+  </body>
+</html>

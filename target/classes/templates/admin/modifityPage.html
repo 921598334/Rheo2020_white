@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{import :: head}"></head>
+
+<script src="/ckeditor/ckeditor.js"></script>
+
+
+<style>
+
+  #pageContent img:nth-child(n){
+
+    width: 80%;
+    height: auto;
+    overflow: hidden;
+
+  }
+
+</style>
+
+
+
+<body>
+
+  <!-- Header Area wrapper Starts -->
+  <head th:replace="~{import :: header}"></head>
+  <!-- Header Area wrapper End -->
+
+
+
+
+
+
+
+  <div id="page" class="section-padding">
+    <div class="container">
+      <div class="row">
+
+
+
+        <div class="show col-md-12" id="myModal">
+          <div class="modal-dialog col-md-12">
+            <div class="modal-content col-md-12">
+
+
+
+
+              <!--如果是管理员可以进行修改-->
+              <div class="modal-body" th:if="${session.user!=null && session.user.getUser_type()==5}">
+
+                <div class="show col-md-12" id="myModal">
+                  <div class="modal-dialog col-md-12">
+                    <div class="modal-content col-md-12">
+
+                      <div class="modal-body">
+                        <h4 class="modal-title" align="center" >修改文章页面</h4>
+
+
+
+                        <div class="alert alert-danger"  role="alert" th:if="${error!=null}"  th:text="${error}" ></div>
+                        <div class="alert alert-success" role="alert" th:if="${info!=null}"  th:text="${info}" ></div>
+
+
+                        <br/>
+
+                        <form class="form-horizontal" role="form" action="/modification" method="post" enctype="multipart/form-data">
+
+                          <div class="form-group">
+
+
+                            <!--文章的ID-->
+                            <input type="hidden" name="id" id="id" th:value="${pageTmp.getId()}">
+
+                            <h8 class="modal-title col-sm-5 col-md-12" th:text="${'创建时间：'+#dates.format(pageTmp.getTime(),'yyyy-MM-dd HH:mm:ss')}"></h8>
+
+                            <input type="hidden" name="time" id="time" th:value="${pageTmp.getTime()}">
+
+                            <br/>
+                            <br/>
+
+                            <div class="form-group">
+
+                              <div class="col-sm-5 col-md-12">
+                                <h6 class="modal-title ">请输文章标题</h6>
+                                <input type="text" class="form-control" id="title" name="title" placeholder="请输文章标题" th:value="${pageTmp.getTitle()}">
+                              </div>
+
+
+                            </div>
+                          </div>
+
+
+
+                          <div class="form-group">
+
+                            <div class="col-sm-5 col-md-12">
+                              <h6 class="modal-title ">正文</h6>
+                              <textarea  class="form-control" id="content" name="content" placeholder="请输入正文内容" th:utext="${pageTmp.getContent()}"></textarea>
+                            </div>
+
+
+                          </div>
+
+
+
+
+                          <script>
+                              // 使用自定义配置
+                              var editorConfig = {
+                                  customConfig: '/ckeditor/editorConfig.js'
+                              };
+
+                              CKEDITOR.replace( 'content', editorConfig);
+                          </script>
+
+
+
+
+
+                          <br/>
+
+
+
+
+
+                          <div class="form-group col-md-12">
+
+                            <br/>
+
+                            <div class="col-sm-offset-4 col-sm-5 col-md-12 text-center">
+
+
+                              <button id="submit_save" type="submit" class="btn btn-default btn-block btn-danger">保存</button>
+                              <br/>
+                              <a th:href="@{/delete(id=${pageTmp.getId()})}"><button id="submit_delete"  class="btn btn-default btn-block btn-danger">删除</button></a>
+                              <br/>
+                              <a href="/admin"><button id="submit_return"  class="btn btn-default btn-block btn-danger">放弃修改并且返回</button></a>
+                            </div>
+
+                            <br/>
+
+
+                          </div>
+
+
+
+                        </form>
+                      </div>
+
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+
+
+
+
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- 第2栏结束 -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <div th:replace="~{import :: down}"></div>
+
+
+
+    <div th:replace="~{import :: script}"></div>
+      
+  </body>
+</html>

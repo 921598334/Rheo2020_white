@@ -29,7 +29,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
-        String[] excludes = new String[]{"/","/upload/**","/login/**","/sign/**","/error/**","/static/**","/css/**","/fonts/**","/img/**","/js/**","/logout/**"};
+        String[] excludes = new String[]{"/","/upload/**","/login/**","/page/**","/sign/**","/error/**","/static/**","/css/**","/fonts/**","/img/**","/js/**","/ckeditor/**","/logout/**"};
         registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns(excludes);
 
     }
