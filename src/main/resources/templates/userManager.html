@@ -140,7 +140,17 @@
 
 
 
-              <div class="form-group">
+
+              <div class="form-group" th:if="${isPayed == false}">
+                <div class="col-sm-5 col-md-12">
+                  <h6 class="modal-title ">您还未缴纳会员费，只有缴纳会员费后才可以上传论文(若已缴纳，请尝试刷新页面)</h6>
+                  <a href="/pay">点击缴纳会员费</a>
+                </div>
+              </div>
+
+
+
+              <div class="form-group" th:if="${isPayed==true}">
                 <div class="col-sm-5 col-md-12">
 
                   <h6 class="modal-title ">请上传您的文件（要求格式为pdf或doc，大小不超过10Mb）</h6>

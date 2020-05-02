@@ -137,13 +137,13 @@ public class SignController {
             return "sign";
         }
 
-        Pattern p = Pattern.compile(regexPhone);
-        Matcher m = p.matcher(tel);
-        boolean isMatch = m.matches();
-        if(!isMatch){
-            model.addAttribute("error","您输入的手机号格式不正确");
-            return "sign";
-        }
+//        Pattern p = Pattern.compile(regexPhone);
+//        Matcher m = p.matcher(tel);
+//        boolean isMatch = m.matches();
+//        if(!isMatch){
+//            model.addAttribute("error","您输入的手机号格式不正确");
+//            return "sign";
+//        }
 
 
 
@@ -154,7 +154,12 @@ public class SignController {
         }
 
 
-        if(!(email.matches(regExEmail1) || email.matches(regExEmail2))){
+//        if(!(email.matches(regExEmail1) || email.matches(regExEmail2))){
+//            model.addAttribute("error","您输入的邮箱格式不正确");
+//            return "sign";
+//        }
+
+        if(!email.contains("@")){
             model.addAttribute("error","您输入的邮箱格式不正确");
             return "sign";
         }

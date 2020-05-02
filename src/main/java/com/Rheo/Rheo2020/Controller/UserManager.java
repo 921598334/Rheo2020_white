@@ -3,7 +3,9 @@ package com.Rheo.Rheo2020.Controller;
 
 import com.Rheo.Rheo2020.Service.FileInfoServer;
 import com.Rheo.Rheo2020.Service.UserService;
+import com.Rheo.Rheo2020.eunm.TradeStatus;
 import com.Rheo.Rheo2020.model.FileInfo;
+import com.Rheo.Rheo2020.model.Orders;
 import com.Rheo.Rheo2020.model.User;
 import com.Rheo.Rheo2020.provider.FileTool;
 import com.Rheo.Rheo2020.provider.FileType;
@@ -82,6 +84,12 @@ public class UserManager {
 
 
 
+
+        //判断用户是否有缴费
+        boolean isPayed = false;
+        Orders orders = user.getOrders();
+        if(orders !=null && orders.getTradeStatus()!=null && orders.getTradeStatus()==TradeStatus.PAYED.getType()) isPayed = true;
+        model.addAttribute("isPayed",isPayed);
 
         return "userManager";
     }
@@ -247,7 +255,29 @@ public class UserManager {
         String selectFileName = file.getOriginalFilename();
         if(!selectFileName.equals("")){
 
-            //判断文件类型是否为word或者pdf
+            String[] backTmp = selectFileName.split("\\.");
+            if(backTmp.length==1){
+                model.addAttribute("error","上传的文件类型不正确（只接受pdf与doc类型的文件）,您当前的文件没有后缀");
+                return "userManager";
+            }
+            String back = backTmp[backTmp.length-1];
+
+            //首先通过后缀名字进行简单判断
+            if(!back.equals("doc") &&
+                    !back.equals("pdf") &&
+                    !back.equals("wps") &&
+                    !back.equals("docx") &&
+                    !back.equals("dot")&&
+                    !back.equals("docm") &&
+                    !back.equals("dotm")){
+
+                model.addAttribute("error","上传的文件类型不正确（只接受pdf与doc类型的文件）,您当前的文件类型为："+back);
+                return "userManager";
+            }
+
+
+
+            //在进一步判断文件类型是否为word或者pdf
             InputStream in = file.getInputStream();
             String fileType = FileType.getFileType(in);
 

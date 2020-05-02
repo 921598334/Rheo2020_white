@@ -24,6 +24,10 @@ public class User {
     @OneToOne
     private FileInfo fileInfo;
 
+    @OneToOne
+    private Orders orders;
+
+
     private String tel;
     private String email;
     private String location;
