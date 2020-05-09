@@ -24,10 +24,12 @@ public class IndexController {
     public String index(Model model, HttpServletResponse response, HttpServletRequest request)
     {
 
-        List<Page> pages = pageServer.showAllPage();
+        //得到最热门的几篇文章
+
+        List<Page> pages = pageServer.showNewPage(5);
+
 
         model.addAttribute("pages",pages);
-
 
 
         return "index";

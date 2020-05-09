@@ -4,6 +4,9 @@ package com.Rheo.Rheo2020.Service;
 import com.Rheo.Rheo2020.model.Page;
 import com.Rheo.Rheo2020.repository.PageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +22,21 @@ public class PageServer {
     //寻找所有文章，并且按照降序排列
     public List<Page> showAllPage(){
         return pageRepository.findAllByOrderByTimeDesc();
+
     }
+
+
+
+
+    //寻找最新的文章，并且按照降序排列
+    public List<Page> showNewPage(Integer count){
+
+
+        PageRequest pageable = PageRequest.of(0, count, Sort.Direction.DESC, "time");
+
+        return pageRepository.findAll(pageable).toList();
+    }
+
 
 
     public void createOrUpdate(Page page){

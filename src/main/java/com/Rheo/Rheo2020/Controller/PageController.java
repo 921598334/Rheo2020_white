@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 
 //与文章的添加修改显示有关
@@ -22,6 +23,22 @@ public class PageController {
 
     @Autowired
     PageServer pageServer;
+
+
+
+
+    //用户查看所有page
+    @GetMapping("/pages")
+    public String showPages(Model model, HttpServletResponse response, HttpServletRequest request)
+    {
+        List<Page> pages = pageServer.showAllPage();
+
+        model.addAttribute("pages",pages);
+
+        return "pages";
+    }
+
+
 
 
 

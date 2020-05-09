@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{import :: head}"></head>
+
+
+<body>
+
+  <!-- Header Area wrapper Starts -->
+  <head th:replace="~{import :: header}"></head>
+  <!-- Header Area wrapper End -->
+
+
+
+
+
+
+
+
+
+  <div id="tonzhi" class="section-padding">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-12">
+          <h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s">已发布的通知公告</h2>
+        </div>
+
+
+
+        <table class="table  table-hover">
+
+          <thead>
+          <tr style='vertical-align: middle;text-align: center;'>
+            <th style='vertical-align: middle;text-align: center;'>题目</th>
+            <th style='vertical-align: middle;text-align: center;'>发布时间</th>
+
+
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr style='vertical-align: middle;text-align: center;' th:each="page,state:${pages}">
+            <td style='vertical-align: middle;text-align: center;' ><a th:href="@{/page(id=${page.getId()})}" th:text="${page.getTitle()}" style="color: #444"></a></td>
+            <td style='vertical-align: middle;text-align: center;' ><a th:href="@{/page(id=${page.getId()})}" th:text="${#dates.format(page.getTime(),'yyyy-MM-dd HH:mm:ss')}" style="color: #444"></a></td>
+
+          </tr>
+
+
+          </tbody>
+        </table>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+    <div th:replace="~{import :: down}"></div>
+
+
+
+    <div th:replace="~{import :: script}"></div>
+      
+  </body>
+</html>
