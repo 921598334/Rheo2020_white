@@ -19,5 +19,7 @@ public class FileInfo {
 
     private Long gmt_modified;
 
+    @OneToOne
+    private ConferenceTopic conferenceTopic;
 
 }

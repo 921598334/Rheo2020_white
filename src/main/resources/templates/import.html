@@ -134,11 +134,11 @@
 
 
                         <!--如果用户没有登陆，就显示登陆-->
-                        <!--<li class="nav-item"   th:if="${session.user==null}">-->
-                            <!--<a class="nav-link" href="/login">-->
-                                <!--登陆-->
-                            <!--</a>-->
-                        <!--</li>-->
+                        <li class="nav-item"   th:if="${session.user==null}">
+                            <a class="nav-link" href="/login">
+                                登陆
+                            </a>
+                        </li>
 
                         <!--如果用户登陆了就显示用户名-->
                         <li class="nav-item"   th:if="${session.user!=null}">
@@ -228,11 +228,11 @@
 
 
 
-                <!--<li th:if="${session.user==null}">-->
-                    <!--<a class="page-scroll" href="/login">-->
-                        <!--登陆-->
-                    <!--</a>-->
-                <!--</li>-->
+                <li th:if="${session.user==null}">
+                    <a class="page-scroll" href="/login">
+                        登陆
+                    </a>
+                </li>
 
                 <li  th:if="${session.user!=null}">
 

@@ -707,7 +707,7 @@
 
 
 
-     <!-- 6 -->
+     <!-- 会议主题 -->
     <div id="topic" class="section-padding">
       <div class="container">
         <div class="row">
@@ -716,126 +716,22 @@
           </div>
         </div>
         <div class="row">
-          <!-- Start featured -->
-          <div class="col-lg-4 col-md-6 col-xs-12">
+
+
+
+
+
+          <div class="col-lg-4 col-md-6 col-xs-12" th:each="topic:${topics}">
             <div class="featured-box-item">
               <!--<div class="featured-icon">-->
                 <!--<i class="fa fa-bolt"></i>-->
               <!--</div>-->
               <div class="featured-content">
-                <h4>流变本构理论与模型</h4>
-                <!--<p>流变本构理论与模型介绍</p>-->
+                <h4 th:text="${topic.getTopic()}"></h4>
+
               </div>
             </div>
           </div>
-          <!-- End featured -->
-          
-          <!-- Start featured -->
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="featured-box-item">
-
-              <div class="featured-content">
-                <h4>流变学测试技术</h4>
-                <!--<p>流变学测试技术</p>-->
-              </div>
-            </div>
-          </div>
-          <!-- End featured -->
-
-          <!-- Start featured -->
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="featured-box-item">
-
-              <div class="featured-content">
-                <h4>岩土与地质流变学</h4>
-                <!--<p>岩土与地质流变学</p>-->
-              </div>
-            </div>
-          </div>
-          <!-- End featured -->
-
-          <!-- Start featured -->
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="featured-box-item">
-
-              <div class="featured-content">
-                <h4>工业流变学</h4>
-                <!--<p>工业流变学</p>-->
-              </div>
-            </div>
-          </div>
-          <!-- End featured -->
-
-          <!-- Start featured -->
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="featured-box-item">
-
-              <div class="featured-content">
-                <h4>聚合物及其加工流变学</h4>
-                <!--<p>聚合物及其加工流变学介绍</p>-->
-              </div>
-            </div>
-          </div>
-          <!-- End featured -->
-
-          <!-- Start featured -->
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="featured-box-item">
-
-              <div class="featured-content">
-                <h4>电-磁-光流变学</h4>
-                <!--<p>电-磁-光流变学</p>-->
-              </div>
-            </div>
-          </div>
-          <!-- End featured -->
-
-
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="featured-box-item">
-
-              <div class="featured-content">
-                <h4>多相多组分体系流变学</h4>
-                <!--<p>多相多组分体系流变学</p>-->
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="featured-box-item">
-
-              <div class="featured-content">
-                <h4>食品、医药与生物流变学</h4>
-                <!--<p>食品、医药与生物流变学</p>-->
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="featured-box-item">
-
-              <div class="featured-content">
-                <h4>石油流变学</h4>
-                <!--<p>石油流变学</p>-->
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="featured-box-item">
-
-              <div class="featured-content">
-                <h4>流变学教育与普及</h4>
-                <!--<p>流变学教育与普及</p>-->
-              </div>
-            </div>
-          </div>
-
-
-
 
 
 
@@ -856,7 +752,7 @@
         <h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s">会议征文要求</h2>
           <p>1. 凡内容符合主题范围、未在国内外正式刊物或其它会议上发表的论文，均可投稿。</p>
           <p>2. 参会代表在 2020 年7 月1日 以前提交符合会议要求的论文（不限篇幅），格式模板可以在会议网站下载。会议将编印论文集。</p>
-          <p>3. 论文投递系统：点击进入</p>
+          <p><a href="/userManager">3. 论文投递系统：点击进入</a></p>
           <p>4. 会议将编辑印刷纸质版论文集，会后论文也将在流变学专业委员会主办的内部刊物《流变学通讯》（电子版）上刊登。经专家审稿后的优秀论文也可向《重庆大学学报（自然科学版）》，《功能材料（自然科学版）》等期刊推荐出版。</p>
 
       </div>

@@ -1,8 +1,11 @@
 package com.Rheo.Rheo2020.Controller;
 
 
+import com.Rheo.Rheo2020.Service.ConferenceTopicServer;
 import com.Rheo.Rheo2020.Service.FileInfoServer;
+import com.Rheo.Rheo2020.Service.MailServer;
 import com.Rheo.Rheo2020.Service.UserService;
+import com.Rheo.Rheo2020.model.ConferenceTopic;
 import com.Rheo.Rheo2020.model.FileInfo;
 import com.Rheo.Rheo2020.model.User;
 import com.Rheo.Rheo2020.provider.FileTool;
@@ -16,10 +19,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
+import java.util.List;
 
 //这个是主界面
 @Controller
@@ -35,6 +40,12 @@ public class UserManager {
     FileTool fileTool;
 
 
+    @Autowired
+    ConferenceTopicServer conferenceTopicServer;
+
+
+    @Autowired
+    MailServer mailServer;
 
     //用户自己的管理页面
     @GetMapping("/userManager")
@@ -42,6 +53,13 @@ public class UserManager {
                          Model model,
                          HttpServletRequest request
     ){
+
+        //得到所有会议的主题
+        List<ConferenceTopic> conferenceTopicList = conferenceTopicServer.findAll();
+        model.addAttribute("topics",conferenceTopicList);
+
+
+
 
         //在进入该页面时，拦截器会首先进行判断，如果有用户了，用户信息会被放在session中
         User user = (User)request.getSession().getAttribute("user");
@@ -80,7 +98,11 @@ public class UserManager {
             model.addAttribute("filePath",filePath);
         }
 
-
+        if(fileInfo.getConferenceTopic()==null){
+            model.addAttribute("currentTopic","null");
+        }else {
+            model.addAttribute("currentTopic",fileInfo.getConferenceTopic().getId());
+        }
 
 
         return "userManager";
@@ -106,10 +128,16 @@ public class UserManager {
             @RequestParam(name="type",defaultValue="") String userType,
             @RequestParam(name="rearch",defaultValue="") String rearch,
 
-            @RequestParam(name="file") MultipartFile file
+            @RequestParam(name="file") MultipartFile file,
+            @RequestParam(name="topic") String topic
+
 
     ) throws IOException {
 
+
+        //得到所有会议的主题
+        List<ConferenceTopic> conferenceTopicList = conferenceTopicServer.findAll();
+        model.addAttribute("topics",conferenceTopicList);
 
 
         //注册的时候用于信息保留的
@@ -126,6 +154,7 @@ public class UserManager {
         //会员类型这里暂时不修改
 
         sessionUser.setRearch(rearch);
+
 
 
 
@@ -208,6 +237,16 @@ public class UserManager {
             model.addAttribute("error","研究方向不能为空");
             return "userManager";
         }
+
+
+
+        if(topic.equals("")){
+
+            model.addAttribute("error","请选择一个会议主题，若会议主题选项中没有您希望的主题，请联系技术支持");
+            return "userManager";
+        }
+
+
 
 
 
@@ -325,6 +364,10 @@ public class UserManager {
 
 
         if(fileInfo!=null){
+
+            ConferenceTopic conferenceTopic = conferenceTopicServer.findById(Integer.parseInt(topic));
+            fileInfo.setConferenceTopic(conferenceTopic);
+
             //更新数据库
             fileInfoServer.createOrUpdate(fileInfo);
         }
@@ -332,12 +375,22 @@ public class UserManager {
 
         userService.createOrUpdate(user);
 
-
         System.out.println("用户更新成功");
 
         model.addAttribute("info","信息已经更新");
 
         request.getSession().setAttribute("user",user);
+
+
+
+
+        //发送邮件
+//        try {
+//            mailServer.sendMailFile("201708021040@cqu.edu.cn","15届流变学会议论文投递(该邮件为系统自动发送，回复无效)","会议论文投递",fileInfo.getTitle(),file);
+//        } catch (MessagingException e) {
+//            System.out.println("发送邮件失败");
+//        }
+
 
         //然后进入用户管理界面
         return  "redirect:/userManager";

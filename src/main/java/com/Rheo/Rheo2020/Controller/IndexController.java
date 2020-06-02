@@ -1,7 +1,9 @@
 package com.Rheo.Rheo2020.Controller;
 
 
+import com.Rheo.Rheo2020.Service.ConferenceTopicServer;
 import com.Rheo.Rheo2020.Service.PageServer;
+import com.Rheo.Rheo2020.model.ConferenceTopic;
 import com.Rheo.Rheo2020.model.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,15 +22,22 @@ public class IndexController {
     @Autowired
     PageServer pageServer;
 
+    @Autowired
+    ConferenceTopicServer conferenceTopicServer;
+
     @GetMapping("/")
     public String index(Model model, HttpServletResponse response, HttpServletRequest request)
     {
 
         //得到最热门的几篇文章
-
         List<Page> pages = pageServer.showNewPage(5);
 
 
+        //得到会议主题
+        List<ConferenceTopic> conferenceTopics = conferenceTopicServer.findAll();
+
+
+        model.addAttribute("topics",conferenceTopics);
         model.addAttribute("pages",pages);
 
 

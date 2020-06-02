@@ -140,18 +140,22 @@
 
 
 
+
+
+
+
+
+
+
+
               <div class="form-group">
                 <div class="col-sm-5 col-md-12">
 
-                  <h6 class="modal-title ">请上传您的文件（要求格式为pdf或doc，大小不超过10Mb）</h6>
-                  <input type="file" id="file" name="file" /> <br>
 
-
-                  <br/>
 
                   <div th:if="${size}!=null">
 
-                    上一次上传的文件名称:<br/>
+                    <h6 class="modal-title ">上一次上传的文件名称:</h6>
                     <a th:text="${fileName}" th:href="${filePath}"></a>
                     <br/>
                     大小:<label th:text="${size}"></label>
@@ -163,6 +167,41 @@
 
 
                   <br/>
+
+
+
+                    <div th:if="${size}!=null">
+
+                        <h6 class="modal-title ">重新上传文件（要求格式为pdf或doc，大小不超过10Mb）</h6>
+                        <input type="file" id="file" name="file" /> <br>
+
+                    </div>
+
+                    <div th:if="${size}==null">
+
+                        <h6 class="modal-title ">请上传您的文件（要求格式为pdf或doc，大小不超过10Mb）</h6>
+                        <input type="file" id="file" name="file" /> <br>
+
+                    </div>
+
+                </div>
+              </div>
+
+
+                <br/>
+
+
+              <div class="form-group">
+                <div class="col-sm-5 col-md-12">
+                  <h6 class="modal-title ">选择会议主题(论文上传后选择才有效)</h6>
+
+                  <select id="topic" name="topic" class="b_select" >
+                    <option value="">请选择</option>
+                    <option th:each="topic:${topics}"
+                            th:value="${topic.getId()}" th:text="${topic.getTopic()}"
+                            th:attr="selected=${topic.getId()==currentTopic}?true:false">
+                    </option>
+                  </select>
 
                 </div>
               </div>

@@ -18,57 +18,8 @@
 
 
 
-  <!-- 第一拦 通知-->
-  <div id="lunwen" class="section-padding">
-    <div class="container">
-      <div class="row">
 
-
-
-        <div class="col-md-12">
-          <h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s">已上传的论文</h2>
-        </div>
-
-        <table class="table table-hover">
-
-            <thead>
-              <tr style='vertical-align: middle;text-align: center;'>
-                <th style='vertical-align: middle;text-align: center;'>作者</th>
-                <th style='vertical-align: middle;text-align: center;'>学历</th>
-                <th style='vertical-align: middle;text-align: center;'>毕业院校（或在读院校）</th>
-                <th style='vertical-align: middle;text-align: center;'>工作单位</th>
-                <th style='vertical-align: middle;text-align: center;'>研究方向</th>
-                <th style='vertical-align: middle;text-align: center;'>论文</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style='vertical-align: middle;text-align: center;' th:each="user,state:${users}">
-                <td style='vertical-align: middle;text-align: center;' th:text="${user.getTrue_name()}!=null?${user.getTrue_name()}:''"></td>
-                <td style='vertical-align: middle;text-align: center;' th:text="${user.getDegree()}!=null?${user.getDegree()}:''"></td>
-                <td style='vertical-align: middle;text-align: center;' th:text="${user.getSchool()}!=null?${user.getSchool()}:''"></td>
-                <td style='vertical-align: middle;text-align: center;' th:text="${user.getOrganization()}!=null?${user.getOrganization()}:''"></td>
-                <td style='vertical-align: middle;text-align: center;' th:text="${user.getRearch()}!=null?${user.getRearch()}:''"></td>
-                <td style='vertical-align: middle;text-align: center;'><a th:href="${user.getFileInfo()}!=null?${user.getFileInfo().getPath()}:''"  th:text="${user.getFileInfo()}!=null?${user.getFileInfo().getTitle()}:''"></a></td>
-              </tr>
-
-
-            </tbody>
-        </table>
-
-
-
-
-
-      </div>
-    </div>
-  </div>
-  <!-- 第1栏结束 -->
-
-
-
-
-
-
+  <!--发布的会议公告-->
   <div id="tonzhi" class="section-padding">
     <div class="container">
       <div class="row">
@@ -106,6 +57,106 @@
       </div>
     </div>
   </div>
+
+
+
+
+
+
+
+  <!--提交的全部论文-->
+  <div id="lunwen" class="section-padding">
+    <div class="container">
+      <div class="row">
+
+
+
+        <div class="col-md-12">
+          <h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s">已上传的论文</h2>
+        </div>
+
+
+
+
+
+
+
+        <form action="/filter" method="post">
+
+          <div class="form-group">
+            <div class="col-sm-5 col-md-12">
+              <h6 class="modal-title ">会议主题</h6>
+
+
+              <select id="topic" name="topic" class="b_select" >
+                <option value="" th:attr="selected=${currentTopic==0 ? true:false}">全部</option>
+                <option th:each="topic:${topics}"
+                        th:value="${topic.getId()}" th:text="${topic.getTopic()}"
+                        th:attr="selected=${topic.getId()==currentTopic}?true:false">
+                </option>
+              </select>
+
+
+
+              <button  type="submit" >执行筛选</button>
+
+            </div>
+          </div>
+
+        </form>
+
+
+
+
+
+        <table class="table table-hover">
+
+            <thead>
+              <tr style='vertical-align: middle;text-align: center;'>
+                <th style='vertical-align: middle;text-align: center;'>作者</th>
+                <th style='vertical-align: middle;text-align: center;'>学历</th>
+                <th style='vertical-align: middle;text-align: center;'>毕业院校（或在读院校）</th>
+                <th style='vertical-align: middle;text-align: center;'>工作单位</th>
+                <th style='vertical-align: middle;text-align: center;'>研究方向</th>
+                <th style='vertical-align: middle;text-align: center;'>论文</th>
+                <th style='vertical-align: middle;text-align: center;'>会议主题</th>
+                <th style='vertical-align: middle;text-align: center;'>会员类型</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style='vertical-align: middle;text-align: center;' th:each="user,state:${users}">
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getTrue_name()}!=null?${user.getTrue_name()}:''"></td>
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getDegree()}!=null?${user.getDegree()}:''"></td>
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getSchool()}!=null?${user.getSchool()}:''"></td>
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getOrganization()}!=null?${user.getOrganization()}:''"></td>
+                <td style='vertical-align: middle;text-align: center;' th:text="${user.getRearch()}!=null?${user.getRearch()}:''"></td>
+                <td style='vertical-align: middle;text-align: center;'><a th:href="${user.getFileInfo()}!=null?${user.getFileInfo().getPath()}:''"  th:text="${user.getFileInfo()}!=null?${user.getFileInfo().getTitle()}:''"></a></td>
+
+
+                <td style='vertical-align: middle;text-align: center;' th:if="${user.getFileInfo()!=null and user.getFileInfo().getConferenceTopic()!=null and user.getFileInfo().getConferenceTopic().getTopic()!=null}" th:text="${user.getFileInfo().getConferenceTopic().getTopic()}"></td>
+                <td style='vertical-align: middle;text-align: center;' th:if="${user.getFileInfo()==null or user.getFileInfo().getConferenceTopic()==null or user.getFileInfo().getConferenceTopic().getTopic()==null}" ></td>
+
+                <td style='vertical-align: middle;text-align: center;' th:if="${user.getUser_type()}=='1'">正式代表会员</td>
+                <td style='vertical-align: middle;text-align: center;' th:if="${user.getUser_type()}=='2'">正式代表非会员</td>
+                <td style='vertical-align: middle;text-align: center;' th:if="${user.getUser_type()}=='3'">学生代表会员</td>
+                <td style='vertical-align: middle;text-align: center;' th:if="${user.getUser_type()}=='4'">学生代表非会员</td>
+              </tr>
+
+
+            </tbody>
+        </table>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- 第1栏结束 -->
+
+
+
 
 
 
